@@ -143,7 +143,7 @@
 	$.jGrowl = function( m , o ) {
 		// To maintain compatibility with older version that only supported one instance we'll create the base container.
 		if ( $('#jGrowl').size() === 0 )
-			$('<div id="jGrowl"></div>').addClass( (o && o.position) ? o.position : $.jGrowl.defaults.position ).addClass(o && o.class).appendTo('body');
+			$('<div id="jGrowl"></div>').addClass( (o && o.position) ? o.position : $.jGrowl.defaults.position ).appendTo('body');
 
 		// Create a notification on the container.
 		$('#jGrowl').jGrowl(m,o);
@@ -240,6 +240,7 @@
 			o.themeState = (o.themeState === '') ? '' : 'ui-state-' + o.themeState;
 
 			var notification = $('<div/>')
+				.addClass(o && o.class)
 				.addClass('jGrowl-notification ' + o.themeState + ' ui-corner-all' + ((o.group !== undefined && o.group !== '') ? ' ' + o.group : ''))
 				.append($('<div/>').addClass('jGrowl-close').html(o.closeTemplate))
 				.append($('<div/>').addClass('jGrowl-header').html(o.header))
